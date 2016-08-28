@@ -1,14 +1,21 @@
+/**
+ * World.js
+ * Fahid Jarmache
+ * Represents the game world.
+ */
 'use strict';
 
 var debug = require("debug")("saerfim:world");
 var QuadTree = require("simple-quadtree");
 var Entity = require("./Entity");
+var WorldSnapshot = require("./WorldSnapshot");
 
 class World {
     // Initializes the quad-tree.
     constructor(x, y, width, height) {
         this.qt = QuadTree(0, 0, width, height);
         this.entities = [];
+        this.gameTick = 0;
         debug("World initialized with top-left position [" + x +  "," + y + "] with width and height of " + width + ", " + height + " respectively.");
         this.addEntity(new Entity(0, 0, 0, 5, 5));
     }

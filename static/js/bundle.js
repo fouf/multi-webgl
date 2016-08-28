@@ -68,6 +68,9 @@
 		players[player.id] = player;
 		console.log("Player id: " + player.id);
 	});
+	socket.on("snapshots", function (data) {
+		console.log(data);
+	});
 
 	socket.emit("auth");
 	var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { create: create });
