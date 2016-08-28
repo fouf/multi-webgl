@@ -2,6 +2,7 @@
  * Entity.js
  * Fahid Jarmache
  * Represents an entity that lives on the server.
+ * ABSTRACT
  */
 'use strict';
 
@@ -9,8 +10,9 @@ const Point = require("./Point");
 
 class Entity {
     constructor(entityID, clientID) {
-        this.entityID = entityID;
-        this.clientID = clientID;
+        this.entityID = entityID; // The entity's ID
+        this.clientID = clientID; // The entity's owner
+        this.entityType = -1; // The entity's type
         this.rotation = 0;
         this.position = Point.ZERO();
     }
@@ -18,7 +20,7 @@ class Entity {
      * Updates the entity's position, rotation among other internals.
      */
     updateEntity(gameClock, gameTick) {
-        // override
+        // to be implemented by extended classes
     }
     /**
      * distanceFrom

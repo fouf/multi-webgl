@@ -16,7 +16,7 @@ class ServerManager {
     constructor(serverGame, server) {
         if (serverGame.addPlayer === undefined || serverGame.removePlayer === undefined) {
             debug("Network class not implementing required methods.");
-            throw("Missing methods.");
+            throw("Missing methods in ServerManager delegate.");
         }
         this.serverGame = serverGame;
         this.nextClientID = Constants.SERVER.FIRST_CLIENT_ID;

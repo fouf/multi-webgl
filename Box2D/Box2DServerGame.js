@@ -30,8 +30,8 @@ class Box2DServerGame extends ServerGame {
      */
     tick(deltaTime) {
         var accumulatedStepTime = 0;
-        while (accumulatedStepTime < deltaTime) {
-            // ClearForces?
+        while (accumulatedStepTime < deltaTime) { // Run many small steps instead of one large one. Keeps the simulation more consistent and stable.
+            // Should we ClearForces? this.world.ClearForces();
 
             var step = Math.min(deltaTime - accumulatedStepTime, Constants.Box2D.TIMESTEP);
             this.world.Step(step, step * Constants.BOX2D.VELOCITY_ITERATIONS, step * Constants.BOX2D.POSITION_ITERATIONS);

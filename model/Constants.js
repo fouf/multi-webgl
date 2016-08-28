@@ -10,6 +10,7 @@ const Constants = {
         VELOCITY_ITERATIONS: 800,
         POSITION_ITERATIONS: 300,
         TIMESTEP: 0.016,
+        MP_SCALE: 50,
     },
     SERVER: {
         FIRST_CLIENT_ID: 0,
