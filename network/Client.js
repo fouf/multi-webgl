@@ -14,6 +14,7 @@ class Client {
 		this.socket = socket;
 		this.id = id;
 		this.snapshotBuffer = []; // world snapshots queued for the client ??
+		this.lastSnapshotSent = null; // use this to detect for redundancies
 		this.lastSnapshotUpdate = 0; // Time since last snapshot
 	}
 	/**
@@ -54,8 +55,12 @@ class Client {
 				sequence: 0, // TODO?
 				buffer: this.snapshotBuffer,
 			};
-			this.socket.emit('snapshots', snapshots);
+			if (true) {
+			// TODO check if minimization left anything useful to send
+				this.socket.emit('snapshots', snapshots); // emit snapshots on socket
+			}
 			this.lastSnapshotUpdate = gameClock;
+			//this.lastSnapshotSent = snapshots[2];
 			this.snapshotBuffer = []; // clear buffer
 		}
 	}

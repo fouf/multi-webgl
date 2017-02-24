@@ -12,7 +12,9 @@ class Point {
     /**
      * Returns a new point at the origin.
      */
-    ZERO() {
+    static ZERO() {
         return new Point(0, 0);
     }
 }
+
+module.exports = Point;

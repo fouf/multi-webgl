@@ -7,3 +7,5 @@ pids
 logs
 *.log
 npm-debug.log*
+bundle.js
+static/

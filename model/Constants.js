@@ -10,12 +10,12 @@ const Constants = {
         VELOCITY_ITERATIONS: 800,
         POSITION_ITERATIONS: 300,
         TIMESTEP: 0.016,
-        MP_SCALE: 50,
+        MP_SCALE: 32,
     },
     SERVER: {
         FIRST_CLIENT_ID: 0,
         SERVER_ID: -1,
-        TARGET_SERVER_DELTA_MS: 1000 / 30,
+        TARGET_SERVER_DELTA_MS: 1000 / 10,
         SNAPSHOT_UPDATE_RATE: 0.1, // Send client snapshots every Xms
     },
 

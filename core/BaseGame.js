@@ -33,7 +33,7 @@ class BaseGame {
      */
     tick(delta) {
         // ...
-        this.entityManager.tick()
+        this.entityManager.tick();
         this.gameClock += delta;
         this.gameTick++;
     }

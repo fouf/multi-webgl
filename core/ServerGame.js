@@ -9,6 +9,7 @@ const debug = require("debug")("saerfim:ServerGame");
 const BaseGame = require("./BaseGame"); 
 const ServerManager = require("../network/ServerManager");
 const WorldSnapshot = require("../model/WorldSnapshot");
+
 class ServerGame extends BaseGame {
     constructor(server) {
         super(server);
@@ -18,7 +19,7 @@ class ServerGame extends BaseGame {
      * Returns the next ID for an entity
      * @return {number} the entity's ID
      */
-    nextEntityID() {
+    getNextEntityID() {
         return ++this.nextEntityID;
     }
     /**
@@ -64,9 +65,13 @@ class ServerGame extends BaseGame {
     tick(deltaTime) {
         super.tick(deltaTime);
         // Update all entities
-
+        var entities = this.entityManager.getEntities();
+        var that = this;
+        entities.forEach(function(value, key) {
+            value.updateEntity(deltaTime, that.getGameClock(), that.getGameTick());
+        });
         // World Snapshots
-        var worldSnapshot = new WorldSnapshot(this, this.entityManager.getEntities());
+        var worldSnapshot = new WorldSnapshot(this, entities);
         // Let network tick
         this.network.tick(this.getGameClock(), worldSnapshot.snap());
     }
